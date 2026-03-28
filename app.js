@@ -72,17 +72,6 @@ function toggleAttendanceFields() {
 toggleAttendanceFields();
 attendanceInputs.forEach(i => i.addEventListener('change', toggleAttendanceFields));
 
-/* ── Show/hide high chair based on child answer ── */
-const childInputs    = document.querySelectorAll('input[name="child"]');
-const highchairRow   = document.getElementById('highchair-row');
-
-function toggleHighchair() {
-  const hasChild = document.querySelector('input[name="child"]:checked')?.value === 'yes';
-  highchairRow.style.display = hasChild ? '' : 'none';
-}
-
-toggleHighchair();
-childInputs.forEach(i => i.addEventListener('change', toggleHighchair));
 
 /* ── RSVP form submit ── */
 

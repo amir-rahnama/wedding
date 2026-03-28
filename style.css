@@ -14,10 +14,10 @@
   --sage-pale: #f0e6d0;
   --accent: #b8965a;
   --accent-light: #d4b87a;
-  --forest: #3d3020;
-  --warm-dark: #3d3020;
-  --mid: #7a6448;
-  --light: #a88c6a;
+  --forest: #0e0c08;
+  --warm-dark: #0e0c08;
+  --mid: #2e2418;
+  --light: #5a4830;
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Jost', system-ui, sans-serif;
@@ -853,6 +853,51 @@ textarea {
   font-style: italic;
   color: var(--mid);
   line-height: 1.7;
+}
+
+.form-note--bold {
+  background: var(--sand);
+  border-left: 4px solid var(--accent);
+  max-width: 380px;
+}
+
+.form-note--bold p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--warm-dark);
+  line-height: 1.65;
+}
+
+/* Number stepper tiles */
+.stepper-group {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.stepper-card { cursor: pointer; }
+.stepper-card input { display: none; }
+
+.stepper-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  border: 1px solid var(--sand);
+  background: var(--ivory);
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--mid);
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.stepper-card input:checked + .stepper-face {
+  border-color: var(--accent);
+  background: var(--cream);
+  box-shadow: 0 0 0 1px var(--accent);
+  color: var(--warm-dark);
 }
 
 .form-submit-row {
