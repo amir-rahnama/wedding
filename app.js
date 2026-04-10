@@ -10,6 +10,8 @@ function showPage(id) {
   if (id === 'rsvp') {
     document.getElementById('rsvp-form-wrap').style.display = '';
     document.getElementById('rsvp-success').classList.add('hidden');
+    const fallLayer = document.getElementById('emoji-fall-layer');
+    if (fallLayer) fallLayer.innerHTML = '';
   }
 }
 
@@ -30,7 +32,7 @@ document.addEventListener('click', e => {
 });
 
 /* ── Countdown ── */
-const weddingDate = new Date('2026-06-14T16:00:00');
+const weddingDate = new Date('2026-08-22T14:00:00');
 
 function updateCountdown() {
   const now = new Date();
@@ -75,6 +77,33 @@ attendanceInputs.forEach(i => i.addEventListener('change', toggleAttendanceField
 
 /* ── RSVP form submit ── */
 
+const PARTY_EMOJIS = [
+  '🎉', '🥳', '🎊', '✨', '💐', '❤️', '🍾', '💖', '🎈', '🌟', '😊', '💕', '🎂', '💫', '🤍', '🫶'
+];
+
+function triggerEmojiFall() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const layer = document.getElementById('emoji-fall-layer');
+  if (!layer) return;
+
+  layer.innerHTML = '';
+  const count = Math.min(52, Math.max(28, Math.floor(window.innerWidth / 10)));
+
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('span');
+    el.className = 'emoji-fall-piece';
+    el.textContent = PARTY_EMOJIS[Math.floor(Math.random() * PARTY_EMOJIS.length)];
+    el.style.left = `${Math.random() * 100}%`;
+    el.style.animationDuration = `${2.2 + Math.random() * 2.6}s`;
+    el.style.animationDelay = `${Math.random() * 1.4}s`;
+    el.style.fontSize = `${15 + Math.random() * 22}px`;
+    el.style.setProperty('--emoji-drift', `${(Math.random() - 0.5) * 110}px`);
+    layer.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+}
+
 // Paste your Google Apps Script Web App URL here after deploying:
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyMF5-UAD1fuG8rAwkrNCuw5q8kNXf0jf9crpMTKgGy7nwi7yEeDUJ_e4nRCPEVpR-f/exec';
 
@@ -110,6 +139,7 @@ form.addEventListener('submit', async e => {
       // Network hiccup — still show success so the guest isn't blocked
     }
     submitBtn.disabled = false;
+    submitBtn.textContent = 'Send RSVP';
   }
 
   if (attendance === 'yes') {
@@ -122,5 +152,6 @@ form.addEventListener('submit', async e => {
 
   formWrap.style.display = 'none';
   successEl.classList.remove('hidden');
+  if (attendance === 'yes') triggerEmojiFall();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
