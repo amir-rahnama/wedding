@@ -684,7 +684,7 @@ body {
 }
 
 .gifts-message {
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 
 .gifts-message p {
@@ -716,17 +716,86 @@ body {
   margin-bottom: 28px;
 }
 
+.gifts-transfer-note {
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 2.2vw, 20px);
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.85;
+  margin: 0 auto 40px;
+  max-width: 34em;
+}
+
 .gifts-details {
   border-top: 1px solid var(--sand);
   padding-top: 28px;
 }
 
-.gifts-placeholder {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  color: var(--light);
+.gifts-bank-table {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: none;
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 2.2vw, 20px);
+  color: var(--warm-dark);
+  text-align: left;
+}
+
+.gifts-bank-table th,
+.gifts-bank-table td {
+  border: none;
+  padding: 10px 0;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.gifts-bank-table th {
+  width: 38%;
+  max-width: 11em;
+  padding-right: 16px;
+  font-weight: 400;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--mid);
+}
+
+.gifts-bank-table th::after {
+  content: ':';
+}
+
+.gifts-bank-table td {
+  font-weight: 400;
+  color: var(--warm-dark);
+  word-break: break-word;
+}
+
+.gifts-bank-hint {
+  font-family: var(--font-serif);
+  font-size: 0.9em;
   font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--light);
+  white-space: normal;
+}
+
+@media (max-width: 480px) {
+  .gifts-bank-table th {
+    white-space: normal;
+    width: 42%;
+  }
+}
+
+.gifts-mono {
+  font-family: inherit;
+  font-weight: inherit;
+  font-variant-numeric: tabular-nums;
+  font-size: 1em;
+  letter-spacing: 0.025em;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* ── RSVP ── */

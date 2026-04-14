@@ -104,7 +104,8 @@ function triggerEmojiFall() {
   }
 }
 
-// Paste your Google Apps Script Web App URL here after deploying:
+// Paste your Google Apps Script Web App URL here after deploying.
+// When you add form fields, update FIELD_ORDER in google-apps-script/rsvp-doPost.gs and redeploy.
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyMF5-UAD1fuG8rAwkrNCuw5q8kNXf0jf9crpMTKgGy7nwi7yEeDUJ_e4nRCPEVpR-f/exec';
 
 const form = document.getElementById('rsvp-form');
@@ -144,7 +145,7 @@ form.addEventListener('submit', async e => {
 
   if (attendance === 'yes') {
     successMsg.textContent =
-      `We've received your RSVP, ${fname}! We can't wait to celebrate with you on June 14th. ✦`;
+      `We've received your RSVP, ${fname}! We can't wait to celebrate with you on August 22nd. ✦`;
   } else {
     successMsg.textContent =
       `Thank you for letting us know, ${fname}. You'll be missed — we'll be thinking of you!`;
