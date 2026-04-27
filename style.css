@@ -163,7 +163,7 @@ body {
   border-radius: 0;
   border: none;
   overflow: hidden;
-  margin-bottom: 36px;
+  margin-bottom: 28px;
   flex-shrink: 0;
   position: relative;
   z-index: 1;
@@ -227,6 +227,10 @@ body {
   z-index: 1;
 }
 
+#page-home .hero-eyebrow {
+  font-size: clamp(13px, 1.85vw, 16px);
+}
+
 .hero-names {
   font-family: var(--font-serif);
   font-size: clamp(36px, 6vw, 72px);
@@ -237,7 +241,7 @@ body {
   white-space: nowrap;
   position: relative;
   z-index: 1;
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 .hero-divider {
@@ -412,6 +416,10 @@ body {
   line-height: 1.15;
 }
 
+.section-title--xl {
+  font-size: clamp(44px, 6vw, 68px);
+}
+
 /* ── Detail cards ── */
 .details-section {
   padding: var(--section-pad) var(--page-gutter);
@@ -451,7 +459,7 @@ body {
 
 .card-heading {
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 400;
   margin-bottom: 12px;
   color: inherit;
@@ -463,7 +471,7 @@ body {
 
 .card-text {
   font-family: var(--font-serif);
-  font-size: 17px;
+  font-size: 19px;
   font-style: italic;
   color: var(--mid);
   line-height: 1.4;
@@ -474,7 +482,7 @@ body {
 }
 
 .card-subtext {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--light);
   margin-top: 12px;
   line-height: 1.6;
@@ -885,6 +893,7 @@ textarea {
 
 .radio-card {
   cursor: pointer;
+  display: block;
 }
 
 .radio-card input {
@@ -901,6 +910,7 @@ textarea {
   background: var(--ivory);
   transition: border-color 0.2s, background 0.2s;
   text-align: center;
+  height: 100%;
 }
 
 .radio-card input:checked+.radio-face {
@@ -940,15 +950,17 @@ textarea {
 .form-note--bold {
   background: var(--sand);
   border-left: 4px solid var(--accent);
-  max-width: 380px;
+  max-width: none;
+  width: 100%;
+  padding: 18px 22px;
 }
 
 .form-note--bold p {
   font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: 650;
+  font-size: 16px;
   color: var(--warm-dark);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 /* Number stepper tiles */
@@ -1048,7 +1060,7 @@ textarea {
   .hero-photo-frame {
     width: 100%;
     aspect-ratio: 21 / 9;
-    margin-bottom: 28px;
+    margin-bottom: 22px;
   }
 
   .form-row.two-col {
@@ -1093,17 +1105,17 @@ textarea {
   }
 
   .cards-row .card-heading {
-    font-size: clamp(15px, 3.6vw, 22px);
+    font-size: clamp(17px, 4vw, 24px);
     margin-bottom: 8px;
     line-height: 1.2;
   }
 
   .cards-row .card-text {
-    font-size: clamp(12px, 2.8vw, 16px);
+    font-size: clamp(14px, 3.2vw, 18px);
   }
 
   .cards-row .card-subtext {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.45;
     margin-top: 8px;
   }
