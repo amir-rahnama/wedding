@@ -116,6 +116,7 @@ body {
 #page-home.page-home > .home-snap-address {
   width: 100%;
   box-sizing: border-box;
+  padding: 0 var(--page-gutter);
 }
 
 #page-home.page-home > .home-snap-story {
@@ -133,6 +134,8 @@ body {
 
 /* First screen: photo + names + corner frame (branches clip here on scroll) */
 .hero-landing {
+  /* vh for older engines; svh when supported (mobile URL bar) */
+  min-height: calc(100vh - var(--nav-h));
   min-height: calc(100svh - var(--nav-h));
   width: 100%;
   max-width: 100%;

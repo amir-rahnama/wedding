@@ -35,13 +35,20 @@ document.addEventListener('click', e => {
 const weddingDate = new Date('2026-08-22T14:00:00');
 
 function updateCountdown() {
+  const daysEl = document.getElementById('cd-days');
+  const hoursEl = document.getElementById('cd-hours');
+  const minsEl = document.getElementById('cd-mins');
+  const secsEl = document.getElementById('cd-secs');
+  if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
   const now = new Date();
   const diff = weddingDate - now;
 
   if (diff <= 0) {
-    ['days', 'hours', 'mins', 'secs'].forEach(k =>
-      document.getElementById(`cd-${k}`).textContent = '0'
-    );
+    daysEl.textContent = '0';
+    hoursEl.textContent = '0';
+    minsEl.textContent = '0';
+    secsEl.textContent = '0';
     return;
   }
 
@@ -50,35 +57,20 @@ function updateCountdown() {
   const mins = Math.floor((diff % 36e5) / 6e4);
   const secs = Math.floor((diff % 6e4) / 1e3);
 
-  document.getElementById('cd-days').textContent = String(days);
-  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-  document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-  document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+  daysEl.textContent = String(days);
+  hoursEl.textContent = String(hours).padStart(2, '0');
+  minsEl.textContent = String(mins).padStart(2, '0');
+  secsEl.textContent = String(secs).padStart(2, '0');
 }
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-/* ── Home hero: reveal date & details on scroll into view ── */
-(function initHeroScrollReveal() {
+/* ── Home hero: date block is visible in HTML (is-revealed) so it works if JS is blocked
+   or errors; this enforces the class for old cached pages or edge cases. ── */
+(function ensureHeroDetailsVisible() {
   const el = document.getElementById('hero-details');
-  if (!el) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    el.classList.add('is-revealed');
-    return;
-  }
-  const io = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          el.classList.add('is-revealed');
-          io.unobserve(el);
-        }
-      });
-    },
-    { rootMargin: '0px 0px -6% 0px', threshold: 0.08 }
-  );
-  io.observe(el);
+  if (el) el.classList.add('is-revealed');
 })();
 
 /* ── Show/hide attendance-only fields ── */
@@ -134,47 +126,49 @@ const form = document.getElementById('rsvp-form');
 const formWrap = document.getElementById('rsvp-form-wrap');
 const successEl = document.getElementById('rsvp-success');
 const successMsg = document.getElementById('success-msg');
-const submitBtn = form.querySelector('[type="submit"]');
+const submitBtn = form ? form.querySelector('[type="submit"]') : null;
 
-form.addEventListener('submit', async e => {
-  e.preventDefault();
+if (form && submitBtn && formWrap && successEl && successMsg) {
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
 
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-
-  const attendance = document.querySelector('input[name="attendance"]:checked')?.value;
-  const fname = document.getElementById('fname').value.trim();
-
-  // Send to Google Sheet (fire-and-forget — no-cors means we can't read the
-  // response, but the data lands in the sheet as long as the URL is set)
-  if (SHEET_URL !== 'PASTE_YOUR_SCRIPT_URL_HERE') {
-    submitBtn.textContent = 'Sending…';
-    submitBtn.disabled = true;
-    try {
-      await fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: new URLSearchParams(new FormData(form))
-      });
-    } catch (_) {
-      // Network hiccup — still show success so the guest isn't blocked
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
     }
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Send RSVP';
-  }
 
-  if (attendance === 'yes') {
-    successMsg.textContent =
-      `We've received your RSVP, ${fname}! We can't wait to celebrate with you on August 22nd. ✦`;
-  } else {
-    successMsg.textContent =
-      `Thank you for letting us know, ${fname}. You'll be missed — we'll be thinking of you!`;
-  }
+    const attendance = document.querySelector('input[name="attendance"]:checked')?.value;
+    const fname = document.getElementById('fname').value.trim();
 
-  formWrap.style.display = 'none';
-  successEl.classList.remove('hidden');
-  if (attendance === 'yes') triggerEmojiFall();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+    // Send to Google Sheet (fire-and-forget — no-cors means we can't read the
+    // response, but the data lands in the sheet as long as the URL is set)
+    if (SHEET_URL !== 'PASTE_YOUR_SCRIPT_URL_HERE') {
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+      try {
+        await fetch(SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: new URLSearchParams(new FormData(form))
+        });
+      } catch (_) {
+        // Network hiccup — still show success so the guest isn't blocked
+      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send RSVP';
+    }
+
+    if (attendance === 'yes') {
+      successMsg.textContent =
+        `We've received your RSVP, ${fname}! We can't wait to celebrate with you on August 22nd. ✦`;
+    } else {
+      successMsg.textContent =
+        `Thank you for letting us know, ${fname}. You'll be missed — we'll be thinking of you!`;
+    }
+
+    formWrap.style.display = 'none';
+    successEl.classList.remove('hidden');
+    if (attendance === 'yes') triggerEmojiFall();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
