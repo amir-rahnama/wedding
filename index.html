@@ -30,11 +30,13 @@
   </header>
 
   <!-- ════════════════════════════ HOME ════════════════════════════ -->
-  <section id="page-home" class="page active">
+  <section id="page-home" class="page page-home active">
 
-    <div class="hero">
+    <div class="home-snap-section home-snap-landing">
 
-      <!-- Botanical corner florals — reused at all 4 corners via CSS transform -->
+      <div class="hero-landing">
+
+      <!-- Botanical corner florals — frame on landing only (clips on scroll) -->
       <svg class="corner-floral tl" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true">
         <path d="M 8 2 C 10 30 15 55 20 85 C 24 110 28 140 33 175" stroke="#b8965a" stroke-width="1.4"
@@ -226,32 +228,35 @@
         <circle cx="175" cy="33" r="3" fill="#c4a05a" opacity="0.45" />
       </svg>
 
-      <p class="hero-eyebrow">Join Us to Celebrate</p>
-
-      <div class="hero-photo-frame">
-        <img src="without_2025.jpg" alt="Carolina & Amir" />
+        <p class="hero-eyebrow hero-eyebrow--above-photo">Join Us to Celebrate</p>
+        <div class="hero-photo-frame">
+          <img src="without_2025.jpg" alt="Carolina & Amir" />
+        </div>
+        <h1 class="hero-names">Carolina &amp; Amir</h1>
       </div>
 
-      <h1 class="hero-names">Carolina &amp; Amir</h1>
+    </div>
 
-      <div class="hero-divider">
-        <span class="divider-line"></span>
-        <span class="divider-icon">✦</span>
-        <span class="divider-line"></span>
-      </div>
+    <div class="home-snap-section home-snap-address">
 
-      <p class="hero-date">Saturday, August 22, 2026 14:00 (2PM)</p>
-      <p class="hero-location">Kristus Konungens, Göteborg</p>
-      <p class="hero-location">Kockagården, Vallda, Kungsbacka</p>
+      <div class="hero-details" id="hero-details" aria-live="polite">
+        <div class="hero-divider hero-detail-piece">
+          <span class="divider-line"></span>
+          <span class="divider-icon">✦</span>
+          <span class="divider-line"></span>
+        </div>
 
-      <div class="hero-cta-group">
-        <button class="btn-primary" data-page="rsvp">RSVP Now</button>
-        <button class="btn-secondary" data-page="program">View Program</button>
+        <p class="hero-date hero-detail-piece hero-detail-piece--date">Saturday, August 22, 2026 14:00 (2PM)</p>
+        <p class="hero-location hero-detail-piece">Kristus Konungens, Göteborg</p>
+        <p class="hero-address hero-detail-piece">Parkgatan 16 · 411 38 Göteborg · Sweden</p>
+        <p class="hero-location hero-detail-piece">Kockagården, Vallda, Kungsbacka</p>
+        <p class="hero-address hero-detail-piece">Sandövägen 51 · 43479 Vallda · Sweden</p>
       </div>
 
     </div>
 
     <!-- Countdown -->
+    <div class="home-snap-section home-snap-countdown">
     <div class="countdown-bar">
       <div class="countdown-item">
         <span class="countdown-num" id="cd-days">—</span>
@@ -273,8 +278,10 @@
         <span class="countdown-label">Seconds</span>
       </div>
     </div>
+    </div>
 
     <!-- Details cards -->
+    <div class="home-snap-section home-snap-cards">
     <div class="details-section">
       <div class="section-header">
         <h2 class="section-title section-title--xl">Join Us to Celebrate</h2>
@@ -285,27 +292,26 @@
           <div class="card-icon">⌖</div>
           <h3 class="card-heading">Church Ceremony</h3>
           <p class="card-text">14:00 (2PM)</p>
-          <p class="card-text">Kristus Konungens Kyrka</p>
-          <p class="card-subtext">Parkgatan 16<br />411 38 Göteborg<br />Sweden</p>
+          <p class="card-text">Kristus Konungens</p>
         </div>
         <div class="detail-card featured">
           <div class="card-icon">✦</div>
           <h3 class="card-heading">Cocktail Hour</h3>
           <p class="card-text">16:00 (4PM)</p>
           <p class="card-text">Kockagården</p>
-          <p class="card-subtext">Sandövägen 51<br />43479, Vallda<br />Sweden</p>
         </div>
         <div class="detail-card">
           <div class="card-icon">⌖</div>
           <h3 class="card-heading">Dinner and Party</h3>
           <p class="card-text">18:00 (6PM)</p>
           <p class="card-text">Kockagården</p>
-          <p class="card-subtext">Sandövägen 51<br />43479, Vallda<br />Sweden</p>
         </div>
       </div>
     </div>
+    </div>
 
     <!-- Story -->
+    <div class="home-snap-section home-snap-story">
     <div class="story-section">
       <div class="section-header">
         <span class="section-pre">Our Story</span>
@@ -319,6 +325,7 @@
           us begin our life together.</p>
         <p class="story-closing">We can't wait to celebrate with you!</p>
       </div>
+    </div>
     </div>
 
   </section>

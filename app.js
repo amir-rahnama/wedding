@@ -59,6 +59,28 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
+/* ── Home hero: reveal date & details on scroll into view ── */
+(function initHeroScrollReveal() {
+  const el = document.getElementById('hero-details');
+  if (!el) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.classList.add('is-revealed');
+    return;
+  }
+  const io = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          el.classList.add('is-revealed');
+          io.unobserve(el);
+        }
+      });
+    },
+    { rootMargin: '0px 0px -6% 0px', threshold: 0.08 }
+  );
+  io.observe(el);
+})();
+
 /* ── Show/hide attendance-only fields ── */
 const attendanceInputs = document.querySelectorAll('input[name="attendance"]');
 const attendanceOnlyRows = document.querySelectorAll('.attendance-only');

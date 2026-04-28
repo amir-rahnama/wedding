@@ -100,21 +100,54 @@ body {
   display: block;
 }
 
-/* ── Hero (home) ── */
-.hero {
-  position: relative;
+/* ── Home: section wrappers (natural height; first panel fills viewport) ── */
+#page-home.page-home {
+  background: var(--cream);
+  width: 100%;
+  max-width: 100%;
+}
+
+#page-home.page-home > .home-snap-landing {
+  padding: 0 var(--page-gutter);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#page-home.page-home > .home-snap-address {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#page-home.page-home > .home-snap-story {
+  margin-bottom: clamp(8px, 2vh, 24px);
+}
+
+/* Align section tops when scrolling past the fixed nav (no snap, no forced viewport height) */
+#page-home.page-home > .home-snap-section {
+  scroll-margin-top: var(--nav-h);
+}
+
+#page-home.page-home .hero-details {
+  text-align: center;
+}
+
+/* First screen: photo + names + corner frame (branches clip here on scroll) */
+.hero-landing {
   min-height: calc(100svh - var(--nav-h));
+  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 60px var(--page-gutter);
-  background: var(--cream);
+  padding: 48px 0 56px;
+  position: relative;
+  z-index: 1;
   overflow: hidden;
+  isolation: isolate;
 }
 
-.hero::before {
+.hero-landing::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -122,9 +155,77 @@ body {
     radial-gradient(ellipse 60% 40% at 20% 30%, rgba(184, 150, 90, 0.08) 0%, transparent 70%),
     radial-gradient(ellipse 50% 60% at 80% 70%, rgba(184, 150, 90, 0.06) 0%, transparent 70%);
   pointer-events: none;
+  z-index: 0;
 }
 
-/* ── Botanical SVG corners ── */
+/* Date & venues — revealed when address panel scrolls into view */
+.hero-details {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: clamp(40px, 8vh, 80px) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-details:not(.is-revealed) {
+  pointer-events: none;
+}
+
+.hero-detail-piece {
+  opacity: 0;
+  transform: translateY(1.35rem);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-details.is-revealed .hero-detail-piece {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-details.is-revealed .hero-detail-piece:nth-child(1) {
+  transition-delay: 0.04s;
+}
+
+.hero-details.is-revealed .hero-detail-piece:nth-child(2) {
+  transition-delay: 0.12s;
+}
+
+.hero-details.is-revealed .hero-detail-piece:nth-child(3) {
+  transition-delay: 0.22s;
+}
+
+.hero-details.is-revealed .hero-detail-piece:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.hero-details.is-revealed .hero-detail-piece:nth-child(5) {
+  transition-delay: 0.36s;
+}
+
+.hero-details.is-revealed .hero-detail-piece:nth-child(6) {
+  transition-delay: 0.42s;
+}
+
+.hero-detail-piece--date {
+  transition-duration: 0.85s, 0.85s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-detail-piece {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Botanical SVG corners (home landing frame) ── */
+.hero-landing .corner-floral {
+  z-index: 1;
+}
+
 .corner-floral {
   position: absolute;
   width: clamp(160px, 22vw, 240px);
@@ -145,13 +246,13 @@ body {
 }
 
 .corner-floral.bl {
-  bottom: 0;
+  bottom: clamp(10px, 1.8vh, 22px);
   left: 0;
   transform: scaleY(-1);
 }
 
 .corner-floral.br {
-  bottom: 0;
+  bottom: clamp(10px, 1.8vh, 22px);
   right: 0;
   transform: scale(-1, -1);
 }
@@ -163,10 +264,10 @@ body {
   border-radius: 0;
   border: none;
   overflow: hidden;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   flex-shrink: 0;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   filter: drop-shadow(10px 16px 32px rgba(14, 12, 8, 0.13))
     drop-shadow(0 0 0.5px rgba(14, 12, 8, 0.12));
 }
@@ -189,6 +290,16 @@ body {
   display: block;
   transform: scale(1.04);
   filter: contrast(1.1) saturate(0.86) brightness(0.96);
+}
+
+/* Above the couple photo, same width as the frame for alignment */
+.hero-eyebrow--above-photo {
+  text-align: center;
+  max-width: min(92%, 1040px);
+  width: 100%;
+  margin: 0 auto clamp(16px, 2.2vh, 22px);
+  z-index: 2;
+  position: relative;
 }
 
 .hero-photo-placeholder {
@@ -216,6 +327,10 @@ body {
 }
 
 /* ── Hero text ── */
+.hero-details .hero-eyebrow {
+  margin-bottom: 20px;
+}
+
 .hero-eyebrow {
   font-family: var(--font-sans);
   font-size: 11px;
@@ -240,8 +355,13 @@ body {
   letter-spacing: 0.04em;
   white-space: nowrap;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   margin-top: 8px;
+}
+
+.hero-details .hero-divider {
+  margin-top: 0;
+  margin-bottom: 24px;
 }
 
 .hero-divider {
@@ -291,8 +411,30 @@ body {
   margin-top: 14px;
 }
 
-.hero-location + .hero-location {
-  margin-top: 1px;
+.hero-location + .hero-address {
+  margin-top: 4px;
+}
+
+.hero-address {
+  font-family: var(--font-sans);
+  font-size: clamp(7px, 2vw, 9px);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  color: var(--light);
+  text-transform: none;
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.hero-address + .hero-location {
+  margin-top: 18px;
 }
 
 .hero-cta-group {
@@ -1122,10 +1264,6 @@ textarea {
 }
 
 @media (max-width: 420px) {
-  .corner-floral {
-    display: none;
-  }
-
   .meal-options {
     grid-template-columns: 1fr;
   }
