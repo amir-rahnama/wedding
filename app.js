@@ -82,11 +82,54 @@ function toggleAttendanceFields() {
   attendanceOnlyRows.forEach(el => {
     el.style.display = attending ? '' : 'none';
   });
+  if (!attending) {
+    document.querySelectorAll('input[name="bringing_car"]').forEach(i => {
+      i.checked = false;
+    });
+    if (rideOfferRange) {
+      rideOfferRange.value = '0';
+      updateRideOfferOutput();
+    }
+  }
+  toggleCarLiftRow();
+}
+
+const carLiftRow = document.getElementById('car-lift-row');
+const rideOfferRange = document.getElementById('ride-offer-range');
+const rideOfferOutput = document.getElementById('ride-offer-output');
+
+function updateRideOfferOutput() {
+  if (!rideOfferRange || !rideOfferOutput) return;
+  const v = Number(rideOfferRange.value);
+  rideOfferOutput.textContent = String(v);
+  const max = Number(rideOfferRange.max) || 4;
+  rideOfferRange.style.setProperty('--range-pct', `${(v / max) * 100}%`);
+}
+
+function toggleCarLiftRow() {
+  if (!carLiftRow) return;
+  const attending = document.querySelector('input[name="attendance"]:checked')?.value === 'yes';
+  const carYes = document.querySelector('input[name="bringing_car"]:checked')?.value === 'yes';
+  const show = attending && carYes;
+  carLiftRow.style.display = show ? '' : 'none';
+  if (!show && rideOfferRange) {
+    rideOfferRange.value = '0';
+    updateRideOfferOutput();
+  }
 }
 
 // Hide on load until a choice is made
 toggleAttendanceFields();
 attendanceInputs.forEach(i => i.addEventListener('change', toggleAttendanceFields));
+
+document.querySelectorAll('input[name="bringing_car"]').forEach(i => {
+  i.addEventListener('change', toggleCarLiftRow);
+});
+
+if (rideOfferRange) {
+  rideOfferRange.addEventListener('input', updateRideOfferOutput);
+  updateRideOfferOutput();
+}
 
 
 /* ── RSVP form submit ── */
@@ -119,7 +162,7 @@ function triggerEmojiFall() {
 }
 
 // Paste your Google Apps Script Web App URL here after deploying.
-// When you add form fields, update FIELD_ORDER in google-apps-script/rsvp-doPost.gs and redeploy.
+// When you add form fields, update your Apps Script / sheet columns (e.g. bringing_car, ride_offer_count replace bus_to) and redeploy.
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyMF5-UAD1fuG8rAwkrNCuw5q8kNXf0jf9crpMTKgGy7nwi7yEeDUJ_e4nRCPEVpR-f/exec';
 
 const form = document.getElementById('rsvp-form');
