@@ -1390,11 +1390,6 @@ a.rsvp-cal-btn {
   color: var(--light);
 }
 
-.footer-sub {
-  font-size: 13px !important;
-  margin-top: 4px;
-}
-
 /* ── Responsive ── */
 @media (max-width: 600px) {
   .corner-floral {
