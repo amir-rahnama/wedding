@@ -758,11 +758,6 @@ a.detail-card.detail-card--jump:focus-visible {
   margin-top: 16px;
 }
 
-#page-gifts .page-hero .page-subtitle {
-  margin-top: 0;
-  margin-bottom: 18px;
-}
-
 #page-gifts .page-hero {
   padding-bottom: clamp(20px, 3.2vw, 32px);
 }
@@ -957,26 +952,6 @@ a.detail-card.detail-card--jump:focus-visible {
   font-weight: 400;
   color: var(--warm-dark);
   margin-bottom: 28px;
-}
-
-.gifts-transfer-note {
-  font-family: var(--font-serif);
-  font-size: clamp(17px, 2.2vw, 20px);
-  font-weight: 300;
-  color: var(--mid);
-  line-height: 1.85;
-  margin: 0 auto 16px;
-  max-width: 34em;
-}
-
-.gifts-contribution-note {
-  font-family: var(--font-serif);
-  font-size: clamp(17px, 2.2vw, 20px);
-  font-weight: 300;
-  color: var(--mid);
-  line-height: 1.85;
-  margin: 0 auto 40px;
-  max-width: 34em;
 }
 
 .gifts-details {
