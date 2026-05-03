@@ -1356,6 +1356,51 @@ textarea {
   margin-bottom: 40px;
 }
 
+.rsvp-calendar-add {
+  margin-top: -12px;
+  margin-bottom: 28px;
+}
+
+.rsvp-calendar-add.hidden {
+  display: none;
+}
+
+.rsvp-calendar-lead {
+  font-family: var(--font-sans);
+  font-size: 15px !important;
+  font-style: normal !important;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--warm-dark);
+  margin-bottom: 16px !important;
+}
+
+.rsvp-calendar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+a.rsvp-cal-btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rsvp-calendar-hint {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-style: normal;
+  color: var(--light);
+  max-width: 26rem;
+  margin: 16px auto 0;
+  line-height: 1.45;
+}
+
 /* ── Footer ── */
 .site-footer {
   text-align: center;

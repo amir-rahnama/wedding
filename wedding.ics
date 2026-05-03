@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Carolina & Amir//Wedding EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:carolina-amir-wedding-2026@carolinaamir.com
+DTSTAMP:20260503T120000Z
+DTSTART:20260822T120000Z
+DTEND:20260823T000000Z
+SUMMARY:Carolina & Amir — Wedding
+DESCRIPTION:Saturday 22 August 2026 — Schedule\n\nKristus Konungs kyrka (Christ the King's Church)\, Parkgatan 16\, Göteborg\n— 13:30 Guest arrival & seating\n— 14:00 Procession begins\n\nKockagården\, Sandövägen 51\, Vallda\n— 16:00 Cocktail & mingle\n— 17:00 Photos\n— 18:00 Dinner\n— 20:00 Toasts and wedding games\n— 21:00 First dance\n— 21:15 Dance floor opens\n— 22:00 Cake cutting\n— 01:00 Last dance & farewell\n\nReminders: 1 week before & 2 hours before (this file).\n\nhttps://www.carolinaamir.com/
+LOCATION:Kristus Konungs kyrka\, Parkgatan 16\, 411 38 Göteborg\, Sweden
+URL:https://www.carolinaamir.com/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Carolina & Amir — wedding in one week
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Carolina & Amir — wedding in 2 hours
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -10,6 +10,8 @@ function showPage(id) {
   if (id === 'rsvp') {
     document.getElementById('rsvp-form-wrap').style.display = '';
     document.getElementById('rsvp-success').classList.add('hidden');
+    const calAdd = document.getElementById('rsvp-calendar-add');
+    if (calAdd) calAdd.classList.add('hidden');
     const fallLayer = document.getElementById('emoji-fall-layer');
     if (fallLayer) fallLayer.innerHTML = '';
   }
@@ -201,12 +203,16 @@ if (form && submitBtn && formWrap && successEl && successMsg) {
       submitBtn.textContent = 'Send RSVP';
     }
 
+    const calAdd = document.getElementById('rsvp-calendar-add');
+
     if (attendance === 'yes') {
       successMsg.textContent =
         `We've received your RSVP, ${fname}! We can't wait to celebrate with you on August 22nd. ✦`;
+      if (calAdd) calAdd.classList.remove('hidden');
     } else {
       successMsg.textContent =
         `Thank you for letting us know, ${fname}. You'll be missed — we'll be thinking of you!`;
+      if (calAdd) calAdd.classList.add('hidden');
     }
 
     formWrap.style.display = 'none';
