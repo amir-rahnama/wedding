@@ -61,7 +61,7 @@ body {
 .nav-inner {
   width: 100%;
   max-width: none;
-  padding: 0 clamp(12px, 4vw, 28px);
+  padding: 0 clamp(24px, 6vw, 60px);
 }
 
 .nav-links {
@@ -1309,10 +1309,12 @@ textarea {
   display: none;
 }
 
-.success-icon {
-  font-size: 48px;
-  color: var(--accent);
-  margin-bottom: 24px;
+#page-rsvp.rsvp-submitted #rsvp-hero {
+  display: none;
+}
+
+#page-rsvp.rsvp-submitted .rsvp-body {
+  padding-top: clamp(48px, 10vw, 96px);
 }
 
 .rsvp-success h2 {
@@ -1332,7 +1334,7 @@ textarea {
 }
 
 .rsvp-calendar-add {
-  margin-top: -12px;
+  margin-top: 12px;
   margin-bottom: 28px;
 }
 
@@ -1364,16 +1366,6 @@ a.rsvp-cal-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.rsvp-calendar-hint {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-style: normal;
-  color: var(--light);
-  max-width: 26rem;
-  margin: 16px auto 0;
-  line-height: 1.45;
 }
 
 /* ── Footer ── */

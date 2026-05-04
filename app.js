@@ -10,6 +10,7 @@ function showPage(id) {
   if (id === 'rsvp') {
     document.getElementById('rsvp-form-wrap').style.display = '';
     document.getElementById('rsvp-success').classList.add('hidden');
+    document.getElementById('page-rsvp').classList.remove('rsvp-submitted');
     const calAdd = document.getElementById('rsvp-calendar-add');
     if (calAdd) calAdd.classList.add('hidden');
     const fallLayer = document.getElementById('emoji-fall-layer');
@@ -217,6 +218,7 @@ if (form && submitBtn && formWrap && successEl && successMsg) {
 
     formWrap.style.display = 'none';
     successEl.classList.remove('hidden');
+    document.getElementById('page-rsvp').classList.add('rsvp-submitted');
     if (attendance === 'yes') triggerEmojiFall();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });

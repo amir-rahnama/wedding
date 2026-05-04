@@ -501,7 +501,7 @@
   <!-- ════════════════════════════ RSVP ════════════════════════════ -->
   <section id="page-rsvp" class="page">
 
-    <div class="page-hero">
+    <div id="rsvp-hero" class="page-hero">
       <p class="hero-eyebrow">Kindly reply by May 25, 2026</p>
       <h1 class="page-title">RSVP</h1>
       <div class="hero-divider">
@@ -509,7 +509,6 @@
         <span class="divider-icon">✦</span>
         <span class="divider-line"></span>
       </div>
-      <p class="page-subtitle">We hope to celebrate with you.</p>
     </div>
 
     <div class="rsvp-body">
@@ -698,9 +697,7 @@
 
       <!-- Success state -->
       <div id="rsvp-success" class="rsvp-success hidden">
-        <div class="success-icon">✦</div>
-        <h2>Thank You!</h2>
-        <p id="success-msg">We've received your RSVP and can't wait to celebrate with you.</p>
+        <h2 class="rsvp-success-heading">Thank you</h2>
         <div id="rsvp-calendar-add" class="rsvp-calendar-add hidden">
           <p class="rsvp-calendar-lead">Add the celebration to your calendar</p>
           <div class="rsvp-calendar-buttons">
@@ -710,8 +707,8 @@
             <a class="btn-secondary rsvp-cal-btn" href="./wedding.ics"
               download="carolina-amir-wedding-2026.ics">Apple / Outlook (.ics — reminders)</a>
           </div>
-          <p class="rsvp-calendar-hint">Use the .ics download for automatic reminders (1 week &amp; 2 hours before). Google’s quick-add link cannot attach alarms.</p>
         </div>
+        <p id="success-msg">We've received your RSVP and can't wait to celebrate with you.</p>
         <button class="btn-secondary" data-page="home">Back to Home</button>
       </div>
 
