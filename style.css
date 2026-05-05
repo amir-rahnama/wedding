@@ -426,7 +426,6 @@ body {
   line-height: 1.35;
   color: var(--light);
   margin-top: 0;
-  text-transform: uppercase;
   position: relative;
   z-index: 1;
 }
@@ -458,7 +457,7 @@ body {
   max-width: min(100%, 38rem);
 }
 
-.hero-address a.hero-address-link {
+a.hero-address-link {
   color: inherit;
   text-decoration: underline;
   text-decoration-color: rgba(184, 150, 90, 0.45);
@@ -466,7 +465,7 @@ body {
   transition: color 0.2s, text-decoration-color 0.2s;
 }
 
-.hero-address a.hero-address-link:hover {
+a.hero-address-link:hover {
   color: var(--accent);
   text-decoration-color: var(--accent);
 }
@@ -799,6 +798,86 @@ a.detail-card.detail-card--jump:focus-visible {
   color: var(--accent);
   font-size: 22px;
   flex-shrink: 0;
+}
+
+.program-venues-summary {
+  text-align: center;
+  margin-bottom: 48px;
+  padding: clamp(32px, 5vw, 56px) var(--page-gutter);
+  border-top: 1px solid var(--sand);
+  border-bottom: 1px solid var(--sand);
+  background: var(--ivory);
+}
+
+.program-venues-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+}
+
+.program-venues-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.program-venue-card {
+  flex: 1;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.program-venue-divider {
+  width: 1px;
+  height: 64px;
+  background: var(--sand);
+  margin: 0 clamp(24px, 5vw, 56px);
+  flex-shrink: 0;
+}
+
+.program-venue-name {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 300;
+  color: var(--warm-dark);
+  line-height: 1.2;
+}
+
+a.program-venue-address {
+  font-family: var(--font-serif);
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--light);
+  text-decoration: underline;
+  text-decoration-color: rgba(184, 150, 90, 0.4);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+a.program-venue-address:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .program-venues-grid {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .program-venue-divider {
+    width: 48px;
+    height: 1px;
+    margin: 0;
+  }
 }
 
 .program-venue {
@@ -1517,4 +1596,129 @@ a.rsvp-cal-btn {
 
 .page.active>*:nth-child(3) {
   animation-delay: 0.16s;
+}
+
+/* ── Stay / Accommodation ── */
+.stay-body {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 40px var(--page-gutter) var(--section-pad);
+  text-align: center;
+}
+
+.stay-message {
+  margin-bottom: 32px;
+}
+
+.stay-message--section {
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+.stay-section-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.stay-card + .stay-card {
+  margin-top: 16px;
+}
+
+.stay-message p {
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 2.2vw, 20px);
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.85;
+  margin-bottom: 16px;
+}
+
+.stay-message a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(184, 150, 90, 0.45);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+.stay-message a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.stay-card {
+  background: var(--ivory);
+  border: 1px solid var(--sand);
+  padding: 24px 28px;
+}
+
+.stay-card-icon {
+  font-size: 16px;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.stay-card h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 400;
+  color: var(--warm-dark);
+  margin-bottom: 16px;
+}
+
+.stay-table {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-family: var(--font-serif);
+  font-size: clamp(15px, 1.8vw, 17px);
+  color: var(--warm-dark);
+  text-align: left;
+}
+
+.stay-table th,
+.stay-table td {
+  border: none;
+  padding: 6px 0;
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+.stay-table th {
+  width: 38%;
+  max-width: 10em;
+  padding-right: 16px;
+  font-weight: 400;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--mid);
+}
+
+.stay-table th::after {
+  content: ':';
+}
+
+.stay-table td {
+  font-weight: 400;
+  color: var(--warm-dark);
+}
+
+.stay-table a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(184, 150, 90, 0.45);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+.stay-table a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
