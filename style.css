@@ -783,7 +783,33 @@ a.detail-card.detail-card--jump:focus-visible {
 .program-body {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 40px var(--page-gutter) var(--section-pad);
+  padding: 40px var(--page-gutter) clamp(32px, 4vw, 56px);
+}
+
+.program-note {
+  background: var(--ivory);
+  border: 1px solid var(--sand);
+  padding: 20px 28px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.program-note-icon {
+  color: var(--accent);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.program-note p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--mid);
+  margin: 0;
 }
 
 #page-program .program-body {
@@ -982,11 +1008,18 @@ a.program-venue-address:hover {
   line-height: 1.6;
 }
 
+.tl-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .program-footer {
   text-align: center;
-  padding: 48px 0;
-  border-top: none;
-  margin-top: clamp(24px, 4vw, 40px);
+  padding: 48px var(--page-gutter);
+  background: var(--ivory);
+  border-top: 1px solid var(--sand);
+  border-bottom: 1px solid var(--sand);
 }
 
 .program-footer p {
@@ -1005,7 +1038,7 @@ a.program-venue-address:hover {
 .gifts-body {
   max-width: 620px;
   margin: 0 auto;
-  padding: 40px var(--page-gutter) var(--section-pad);
+  padding: 40px var(--page-gutter) clamp(32px, 4vw, 56px);
   text-align: center;
 }
 
@@ -1430,6 +1463,16 @@ textarea {
   display: none;
 }
 
+.rsvp-gifts-prompt.hidden {
+  display: none;
+}
+
+.rsvp-gifts-prompt a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .rsvp-calendar-lead {
   font-family: var(--font-sans);
   font-size: 15px !important;
@@ -1607,11 +1650,38 @@ a.rsvp-cal-btn {
   animation-delay: 0.16s;
 }
 
+/* ── Info subsections ── */
+.info-section {
+  margin-bottom: clamp(40px, 6vw, 64px);
+}
+
+.info-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--sand);
+}
+
+.info-section-icon {
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.info-section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 400;
+  color: var(--warm-dark);
+  margin: 0;
+}
+
 /* ── Stay / Accommodation ── */
 .stay-body {
   max-width: 620px;
   margin: 0 auto;
-  padding: 40px var(--page-gutter) var(--section-pad);
+  padding: 40px var(--page-gutter) clamp(32px, 4vw, 56px);
   text-align: center;
 }
 
@@ -1730,4 +1800,49 @@ a.rsvp-cal-btn {
 .stay-table a:hover {
   color: var(--accent);
   text-decoration-color: var(--accent);
+}
+
+/* ── Page-bottom next-page prompt ── */
+.page-next-prompt {
+  text-align: center;
+  padding: 40px var(--page-gutter);
+  border-top: 1px solid var(--sand);
+}
+
+.page-next-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--mid);
+  margin-bottom: 24px;
+}
+
+.page-next-prompt .btn-primary {
+  margin-top: 0;
+}
+
+/* home snap section for next-page prompt */
+.home-snap-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-snap-next .page-next-prompt {
+  border-top: none;
+}
+
+/* ── RSVP couple/family notice ── */
+.rsvp-notice {
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.rsvp-notice p {
+  font-family: var(--font-serif);
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--mid);
+  margin: 0;
 }

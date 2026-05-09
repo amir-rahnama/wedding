@@ -205,15 +205,18 @@ if (form && submitBtn && formWrap && successEl && successMsg) {
     }
 
     const calAdd = document.getElementById('rsvp-calendar-add');
+    const giftsPrompt = document.getElementById('rsvp-gifts-prompt');
 
     if (attendance === 'yes') {
       successMsg.textContent =
         `We've received your RSVP, ${fname}! We can't wait to celebrate with you on August 22nd. ✦`;
       if (calAdd) calAdd.classList.remove('hidden');
+      if (giftsPrompt) giftsPrompt.classList.remove('hidden');
     } else {
       successMsg.textContent =
         `Thank you for letting us know, ${fname}. You'll be missed — we'll be thinking of you!`;
       if (calAdd) calAdd.classList.add('hidden');
+      if (giftsPrompt) giftsPrompt.classList.add('hidden');
     }
 
     formWrap.style.display = 'none';
