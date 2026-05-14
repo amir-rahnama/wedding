@@ -9,6 +9,8 @@ function showPage(id) {
   // Reset RSVP to form view on re-visit
   if (id === 'rsvp') {
     document.getElementById('rsvp-form-wrap').style.display = '';
+    const notice = document.querySelector('.rsvp-notice');
+    if (notice) notice.style.display = '';
     document.getElementById('rsvp-success').classList.add('hidden');
     document.getElementById('page-rsvp').classList.remove('rsvp-submitted');
     const calAdd = document.getElementById('rsvp-calendar-add');
@@ -170,6 +172,7 @@ const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwg4_6l3jJcLFn295MlK7
 
 const form = document.getElementById('rsvp-form');
 const formWrap = document.getElementById('rsvp-form-wrap');
+const rsvpNotice = document.querySelector('.rsvp-notice');
 const successEl = document.getElementById('rsvp-success');
 const successMsg = document.getElementById('success-msg');
 const submitBtn = form ? form.querySelector('[type="submit"]') : null;
@@ -221,6 +224,7 @@ if (form && submitBtn && formWrap && successEl && successMsg) {
     }
 
     formWrap.style.display = 'none';
+    if (rsvpNotice) rsvpNotice.style.display = 'none';
     successEl.classList.remove('hidden');
     document.getElementById('page-rsvp').classList.add('rsvp-submitted');
     if (attendance === 'yes') triggerEmojiFall();
