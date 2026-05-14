@@ -166,7 +166,7 @@ function triggerEmojiFall() {
 
 // Paste your Google Apps Script Web App URL here after deploying.
 // When you add form fields, update your Apps Script / sheet columns (e.g. bringing_car, ride_offer_count replace bus_to) and redeploy.
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbz4D6iZ8QMaY7HJDdiWsYYSfkRoHhM-cGi6A9VjSrCsWezzx2qL7LUvCQY5V7G5GX7N/exec';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwg4_6l3jJcLFn295MlK7SK44RyNmY4F_9Lt0V1z7v0YtT9_OX6BFzEFIlSopc_qyuC/exec';
 
 const form = document.getElementById('rsvp-form');
 const formWrap = document.getElementById('rsvp-form-wrap');
