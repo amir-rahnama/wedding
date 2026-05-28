@@ -1737,6 +1737,7 @@ a.rsvp-cal-btn {
   color: var(--mid);
   line-height: 1.85;
   margin-bottom: 16px;
+  text-align: left;
 }
 
 .stay-message a {
